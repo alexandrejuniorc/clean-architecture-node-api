@@ -50,11 +50,13 @@ describe("SignUpController", () => {
       body: {
         email: "a@b.com",
         name: "any_name",
-        passwordConfirmation: "any_password",
+        password: "any_password",
       },
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
-    expect(httpResponse?.body).toEqual(new MissingParamError("password"))
+    expect(httpResponse?.body).toEqual(
+      new MissingParamError("passwordConfirmation")
+    )
   })
 })
