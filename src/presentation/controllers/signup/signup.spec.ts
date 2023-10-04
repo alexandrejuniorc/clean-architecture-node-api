@@ -30,7 +30,7 @@ const makeEmailValidator = (): EmailValidator => {
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    add(account: AddAccountModel): AccountModel {
+    async add(account: AddAccountModel): Promise<AccountModel> {
       const fakeAccount = {
         id: "valid_id",
         name: "valid_name",
@@ -38,7 +38,7 @@ const makeAddAccount = (): AddAccount => {
         password: "valid_password",
       }
 
-      return fakeAccount
+      return new Promise((resolve) => resolve(fakeAccount))
     }
   }
 
@@ -185,8 +185,8 @@ describe("SignUpController", () => {
 
   it("should return 500 if AddAccount throws", async () => {
     const { sut, addAccountStub } = makeSut()
-    jest.spyOn(addAccountStub, "add").mockImplementationOnce(() => {
-      throw new Error()
+    jest.spyOn(addAccountStub, "add").mockImplementationOnce(async () => {
+      return new Promise((resolve, reject) => reject(new Error()))
     })
 
     const httpRequest = {
