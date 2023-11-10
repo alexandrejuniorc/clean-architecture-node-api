@@ -5,7 +5,7 @@ O objetivo do do projeto é criar uma API com uma arquitetura bem definida e des
 
 <!-- ## [**Link para a documentação da API**](http://fordevs.herokuapp.com/api-docs) -->
 
-> ## APIs construídas no treinamento
+> ## APIs construídas
 
 1. [Cadastro](./requirements/signup.md)
 2. [Login](./requirements/login.md)
