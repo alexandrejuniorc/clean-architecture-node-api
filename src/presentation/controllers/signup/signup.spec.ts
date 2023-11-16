@@ -112,7 +112,7 @@ describe("SignUpController", () => {
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
     expect(httpResponse?.body).toEqual(
-      new MissingParamError("passwordConfirmation")
+      new MissingParamError("passwordConfirmation"),
     )
   })
 
@@ -129,7 +129,7 @@ describe("SignUpController", () => {
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse?.statusCode).toBe(400)
     expect(httpResponse?.body).toEqual(
-      new InvalidParamError("passwordConfirmation")
+      new InvalidParamError("passwordConfirmation"),
     )
   })
 
